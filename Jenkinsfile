@@ -3,6 +3,8 @@ pipeline {
   tools {
     maven 'Maven_3_9_14'
   }
+  
+  triggers { githubPush() }
 
   stages {
     stage('CompileandRunSonarAnalysis') {
@@ -43,7 +45,7 @@ pipeline {
     }
     stage('RunDASTUsingZAP') {
       steps {
-        bat("C:\\zap\\ZAP_2.17.0\\zap.bat -port 9393 -cmd -quickurl https://www.example.com -quickprogress -quickout C:\\zap\\ZAP_2.17.0\\report.html")
+        bat("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\ZAP_2.17.0\\zap.bat -port 9393 -cmd -quickurl https://www.example.com -quickprogress -quickout C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\ZAP_2.17.0\\report.html")
       }
     }
 
